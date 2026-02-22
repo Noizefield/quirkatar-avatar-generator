@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Noizefield/quirkatar-avatar-generator/main/Quirkatar.jpg" width="972px" />
+  <img src="assets/Quirkatar.jpg" width="972px" />
   <h1>✨ Quirkatar Generator</h1>
   <p>A free, lightweight, zero-dependency procedural avatar generator</p>
 
@@ -14,8 +14,7 @@
 
 Create unique, funny, and random avatars instantly from a seed string. Perfect for user profiles, default avatars, and adding a touch of personality to your application.
 
-![Avatar Grid](./preview.png)
-*(Note: Add a screenshot of the avatar grid here and name it `preview.png`)*
+![Avatar Grid](assets/Quirkatar_Grid.jpg)
 
 ## Features
 

@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Noizefield/quirkatar-avatar-generator/main/assets/preview-avatar.png" width="200px" />
+  <img src="https://raw.githubusercontent.com/Noizefield/quirkatar-avatar-generator/main/assets/Quirkatar.jpg" width="200px" />
   <h1>✨ Quirkatar Generator</h1>
-  <p>A lightweight, real-time avatar generator built with Google AI Studio.</p>
+  <p>A free, lightweight, zero-dependency procedural avatar generator for React</p>
 
   <a href="https://noizefield.github.io/quirkatar-avatar-generator/">
     <img src="https://img.shields.io/badge/LIVE_DEMO-Try_It_Now-brightgreen?style=for-the-badge&logo=google-chrome" />

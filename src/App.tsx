@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Avatar } from './lib/avatar';
-import { RefreshCw, Copy, Check, Github } from 'lucide-react';
+import { RefreshCw, Copy, Check } from 'lucide-react';
 
 function generateRandomSeed() {
   return Math.random().toString(36).substring(2, 10);
@@ -28,18 +28,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#FDFCF8] text-stone-900 font-sans selection:bg-indigo-100 selection:text-indigo-900">
-      {/* Navigation */}
-      <nav className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-        <div className="flex items-center gap-3 font-bold text-xl tracking-tight">
-          <Avatar seed="logo" size={32} square className="rounded-lg shadow-sm" />
-          <span>Quirkatar</span>
-        </div>
-        <a href="#" className="text-stone-500 hover:text-stone-900 transition-colors flex items-center gap-2 font-medium">
-          <Github size={20} />
-          <span>GitHub</span>
-        </a>
-      </nav>
-
       {/* Hero Section */}
       <header className="max-w-4xl mx-auto px-6 pt-20 pb-32 flex flex-col items-center text-center">
         <div className="relative mb-12 group">

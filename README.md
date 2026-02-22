@@ -1,20 +1,62 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Quirkatar 👾
 
-# Run and deploy your AI Studio app
+> A free, lightweight, zero-dependency procedural avatar generator for React.
 
-This contains everything you need to run your app locally.
+Create unique, funny, and random avatars instantly from a seed string. Perfect for user profiles, default avatars, and adding a touch of personality to your application.
 
-View your app in AI Studio: https://ai.studio/apps/59c96f31-e57a-44c7-be2f-ea503bec5115
+![Avatar Grid](./preview.png)
+*(Note: Add a screenshot of the avatar grid here and name it `preview.png`)*
 
-## Run Locally
+## Features
 
-**Prerequisites:**  Node.js
+- 🪶 **Zero Dependencies:** Built entirely with React and SVG. No heavy libraries, no external network requests. Just pure, fast rendering.
+- 🎲 **Deterministic Seeds:** The same seed string will always generate the exact same avatar. Perfect for hashing user IDs or email addresses.
+- ♾️ **Infinite Combinations:** With various head shapes, eyes, mouths, ears, and a carefully curated color palette, the possibilities are endless.
+- 🎨 **Fully Customizable:** Easily adjust the size, shape (circle or square), and pass custom CSS classes.
+- ⚡ **Lightweight:** Minimal footprint, making it perfect for any React project.
 
+## Installation
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Since Quirkatar is currently a single-file library, the easiest way to use it is to copy the component directly into your project.
+
+1. Copy `src/lib/avatar.tsx` into your React project.
+2. Import and use it!
+
+*(If you publish this to npm, you can update this section to `npm install quirkatar`)*
+
+## Usage
+
+```tsx
+import React from 'react';
+import { Avatar } from './lib/avatar';
+
+export default function UserProfile() {
+  return (
+    <div className="profile">
+      {/* Generates a unique avatar based on the user's email or ID */}
+      <Avatar seed="user@example.com" size={120} />
+      
+      {/* Square avatar with custom Tailwind classes */}
+      <Avatar 
+        seed="another-unique-seed" 
+        size={64} 
+        square={true} 
+        className="shadow-lg border-2 border-white" 
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `seed` | `string` | **Required** | The string used to deterministically generate the avatar. |
+| `size` | `number` | `100` | The width and height of the avatar in pixels. |
+| `square` | `boolean` | `false` | If true, renders a square avatar instead of a circle. |
+| `className` | `string` | `undefined` | Optional CSS classes to pass to the underlying SVG element. |
+
+## License
+
+MIT License. Free to use in personal and commercial projects.

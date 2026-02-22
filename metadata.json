@@ -1,0 +1,5 @@
+{
+  "name": "Procedural Avatars",
+  "description": "A lightweight, zero-dependency procedural avatar generator.",
+  "requestFramePermissions": []
+}

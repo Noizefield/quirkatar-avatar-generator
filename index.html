@@ -1,27 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Quirkatar is a free, lightweight, zero-dependency procedural avatar generator for React. Create unique, funny, and random avatars instantly from a seed." />
-    <meta name="keywords" content="avatar generator, random avatar, procedural avatar, react avatar generator, free avatar generator, profile picture generator, seed avatar, quirkatar" />
-    <meta name="author" content="Quirkatar" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Quirkatar | Free Random Avatar Generator" />
-    <meta property="og:description" content="A lightweight, zero-dependency procedural avatar generator. Generates unique, fun, and quirky characters based on a simple string seed." />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="Quirkatar | Free Random Avatar Generator" />
-    <meta property="twitter:description" content="A lightweight, zero-dependency procedural avatar generator. Generates unique, fun, and quirky characters based on a simple string seed." />
-    
-    <title>Quirkatar | Free Random Avatar Generator</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Quirkatar is a free, lightweight, zero-dependency procedural avatar generator. Create unique, funny, and random avatars instantly from a seed.">
+  <title>Quirkatar | Free Random Avatar Generator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="app-container">
+    <header class="hero">
+      <div class="preview-wrapper">
+        <div class="glow"></div>
+        <div id="main-avatar" class="main-avatar shadow border"></div>
+        <button id="refresh-main-btn" class="icon-btn refresh-btn shadow" aria-label="Regenerate avatar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+            <path d="M3 3v5h5" />
+          </svg>
+        </button>
+      </div>
+
+      <h1 class="title"><span class="gradient-text">Quirkatar</span> Generator</h1>
+      <h2 class="subtitle">A free, lightweight, zero-dependency <strong>procedural avatar generator</strong>. Generates
+        unique, fun, and quirky profile pictures based on a simple string seed.</h2>
+
+      <div class="input-wrapper focus-ring">
+        <span class="seed-label">seed=</span>
+        <input type="text" id="seed-input" placeholder="Type anything...">
+        <button id="copy-btn" class="copy-btn">
+          <svg id="copy-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+          </svg>
+          <svg id="check-icon" style="display: none;" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+          <span id="copy-text">Copy</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="seo-section">
+      <div class="container text-center">
+        <h2 class="section-title">Why use Quirkatar Avatar Generator?</h2>
+        <p class="section-desc">Whether you're building a new SaaS, a community forum, or a multiplayer game, giving
+          your users a unique identity is crucial. Quirkatar is the perfect <strong>random avatar generator</strong> for
+          developers who want a drop-in, lightweight solution without relying on external image APIs.</p>
+        <div class="features-grid">
+          <div class="feature">
+            <h3>Zero Dependencies</h3>
+            <p>Built entirely with Vanilla JS and inline SVG. No heavy libraries, no external network requests. Just
+              pure, fast rendering.</p>
+          </div>
+          <div class="feature">
+            <h3>Deterministic Seeds</h3>
+            <p>The same seed string will always generate the exact same avatar. Perfect for hashing user IDs or email
+              addresses.</p>
+          </div>
+          <div class="feature">
+            <h3>Infinite Combinations</h3>
+            <p>With various head shapes, eyes, mouths, ears, and a carefully curated color palette, the possibilities
+              are endless.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-section">
+      <div class="container container-wide">
+        <div class="grid-header">
+          <div>
+            <h2 class="section-title text-left">Infinite Possibilities</h2>
+            <p class="color-stone-500">Click any avatar to use its seed.</p>
+          </div>
+          <button id="regenerate-grid-btn" class="secondary-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+              <path d="M3 3v5h5" />
+            </svg>
+            Regenerate Grid
+          </button>
+        </div>
+        <div id="avatar-grid" class="avatar-grid"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <div id="footer-logo" class="grayscale"></div>
+        <p class="font-medium text-stone-300">Quirkatar - Free Random Avatar Generator</p>
+        <p class="text-sm">Open source and lightweight. Built for fun.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="avatar.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

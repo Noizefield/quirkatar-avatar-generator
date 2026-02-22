@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Noizefield/quirkatar-avatar-generator/main/assets/Quirkatar.jpg" width="200px" />
+  <img src="https://raw.githubusercontent.com/Noizefield/quirkatar-avatar-generator/main/Quirkatar.jpg" width="972px" />
   <h1>✨ Quirkatar Generator</h1>
   <p>A free, lightweight, zero-dependency procedural avatar generator for React</p>
 

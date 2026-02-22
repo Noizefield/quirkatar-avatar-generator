@@ -51,10 +51,32 @@ function generateAvatarSvg(seed, size = 100, square = false) {
 
   let svg = `<svg width="${size}" height="${size}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">`;
 
+  svg += `
+    <style>
+      @keyframes quirksBreathe {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.02) translateY(-1px); }
+      }
+      @keyframes quirksBlink {
+        0%, 96%, 100% { transform: scaleY(1); }
+        98% { transform: scaleY(0.1); }
+      }
+      @keyframes quirksTwitch {
+        0%, 90%, 100% { transform: rotate(0deg); }
+        93% { transform: rotate(3deg); }
+        96% { transform: rotate(-3deg); }
+      }
+      .quirks-breathe { animation: quirksBreathe 4s infinite ease-in-out; transform-origin: 50px 50px; }
+      .quirks-blink { animation: quirksBlink 5s infinite; transform-origin: 50px 45px; }
+      .quirks-twitch { animation: quirksTwitch 6s infinite ease-in-out; transform-origin: 50px 50px; }
+    </style>
+  `;
+
   // Background
   svg += `<rect width="100" height="100" fill="${bgColor}" rx="${square ? 0 : 50}" />`;
 
   // Ears
+  svg += `<g class="quirks-twitch">`;
   if (ears === 'cat') {
     svg += `<polygon points="15,45 10,10 45,15" fill="${headColor}" />
             <polygon points="85,45 90,10 55,15" fill="${headColor}" />`;
@@ -70,7 +92,9 @@ function generateAvatarSvg(seed, size = 100, square = false) {
             <line x1="70" y1="30" x2="85" y2="10" stroke="${headColor}" stroke-width="4" stroke-linecap="round" />
             <circle cx="85" cy="10" r="6" fill="${detailColor}" />`;
   }
+  svg += `</g>`;
 
+  svg += `<g class="quirks-breathe">`;
   // Head
   if (headShape === 'circle') {
     svg += `<circle cx="50" cy="50" r="35" fill="${headColor}" />`;
@@ -85,6 +109,7 @@ function generateAvatarSvg(seed, size = 100, square = false) {
   }
 
   // Eyes
+  svg += `<g class="quirks-blink">`;
   if (eyes === 'normal') {
     svg += `<circle cx="35" cy="45" r="6" fill="#111" />
             <circle cx="65" cy="45" r="6" fill="#111" />`;
@@ -108,6 +133,7 @@ function generateAvatarSvg(seed, size = 100, square = false) {
             <circle cx="30" cy="50" r="5" fill="#111" />
             <circle cx="70" cy="50" r="5" fill="#111" />`;
   }
+  svg += `</g>`;
 
   // Mouth
   if (mouth === 'smile') {
@@ -143,6 +169,7 @@ function generateAvatarSvg(seed, size = 100, square = false) {
   } else if (accessory === 'mustache') {
     svg += `<path d="M 30 60 Q 50 50 70 60 Q 60 65 50 62 Q 40 65 30 60 Z" fill="#111" />`;
   }
+  svg += `</g>`;
 
   svg += `</svg>`;
   return svg;

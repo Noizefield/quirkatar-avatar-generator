@@ -34,7 +34,7 @@ Quirkatar is a simple Vanilla JavaScript library. Simply include the `avatar.js`
 
 ## Usage
 
-You can use the `generateAvatarSvg(seed, size, square)` function to generate the raw SVG string, which you can then inject into any HTML element.
+You can use the `generateAvatarSvg(seed, size, square, animated)` function to generate the raw SVG string, which you can then inject into any HTML element.
 
 ```html
 <div id="avatar-container"></div>
@@ -49,13 +49,14 @@ You can use the `generateAvatarSvg(seed, size, square)` function to generate the
 ```
 
 ## API
-### `generateAvatarSvg(seed, size, square)`
+### `generateAvatarSvg(seed, size, square, animated)`
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
 | `seed` | `string` | **Required** | The string used to deterministically generate the avatar. |
 | `size` | `number` | `100` | The width and height of the avatar in pixels. |
 | `square` | `boolean` | `false` | If true, renders a square avatar instead of a circle. |
+| `animated` | `boolean` | `true` | If true, injects CSS keyframes to animate the avatar. |
 
 ## License
 

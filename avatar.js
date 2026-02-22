@@ -31,7 +31,7 @@ const COLORS = [
   '#F94144', '#F3722C', '#F8961E', '#F9C74F', '#90BE6D', '#43AA8B', '#577590'
 ];
 
-function generateAvatarSvg(seed, size = 100, square = false) {
+function generateAvatarSvg(seed, size = 100, square = false, animated = true) {
   const seedNum = xmur3(seed)();
   const rand = mulberry32(seedNum);
 
@@ -51,41 +51,43 @@ function generateAvatarSvg(seed, size = 100, square = false) {
 
   let svg = `<svg width="${size}" height="${size}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">`;
 
-  svg += `
-    <style>
-      @keyframes quirksBreathe {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05) translateY(-3px); }
-      }
-      @keyframes quirksBlink {
-        0%, 94%, 100% { transform: scaleY(1); }
-        96% { transform: scaleY(0.01); }
-      }
-      @keyframes quirksTwitch {
-        0%, 90%, 100% { transform: rotate(0deg); }
-        93% { transform: rotate(8deg); }
-        96% { transform: rotate(-8deg); }
-      }
-      @keyframes quirksSmile {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-3px) scale(1.1); }
-      }
-      @keyframes quirksFrown {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(6px); }
-      }
-      @keyframes quirksTalk {
-        0%, 100% { transform: scaleY(1); }
-        50% { transform: scaleY(1.3); }
-      }
-      .quirks-breathe { animation: quirksBreathe 4s infinite ease-in-out; transform-origin: 50px 50px; }
-      .quirks-blink { animation: quirksBlink 4s infinite; transform-origin: 50px 45px; }
-      .quirks-twitch { animation: quirksTwitch 5s infinite ease-in-out; transform-origin: 50px 50px; }
-      .quirks-smile { animation: quirksSmile 3s infinite ease-in-out; transform-origin: 50px 70px; }
-      .quirks-frown { animation: quirksFrown 4s infinite ease-in-out; transform-origin: 50px 70px; }
-      .quirks-talk { animation: quirksTalk 0.5s infinite alternate; transform-origin: 50px 70px; }
-    </style>
-  `;
+  if (animated) {
+    svg += `
+      <style>
+        @keyframes quirksBreathe {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05) translateY(-3px); }
+        }
+        @keyframes quirksBlink {
+          0%, 94%, 100% { transform: scaleY(1); }
+          96% { transform: scaleY(0.01); }
+        }
+        @keyframes quirksTwitch {
+          0%, 90%, 100% { transform: rotate(0deg); }
+          93% { transform: rotate(8deg); }
+          96% { transform: rotate(-8deg); }
+        }
+        @keyframes quirksSmile {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-3px) scale(1.1); }
+        }
+        @keyframes quirksFrown {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(6px); }
+        }
+        @keyframes quirksTalk {
+          0%, 100% { transform: scaleY(1); }
+          50% { transform: scaleY(1.3); }
+        }
+        .quirks-breathe { animation: quirksBreathe 4s infinite ease-in-out; transform-origin: 50px 50px; }
+        .quirks-blink { animation: quirksBlink 4s infinite; transform-origin: 50px 45px; }
+        .quirks-twitch { animation: quirksTwitch 5s infinite ease-in-out; transform-origin: 50px 50px; }
+        .quirks-smile { animation: quirksSmile 3s infinite ease-in-out; transform-origin: 50px 70px; }
+        .quirks-frown { animation: quirksFrown 4s infinite ease-in-out; transform-origin: 50px 70px; }
+        .quirks-talk { animation: quirksTalk 0.5s infinite alternate; transform-origin: 50px 70px; }
+      </style>
+    `;
+  }
 
   // Background
   svg += `<rect width="100" height="100" fill="${bgColor}" rx="${square ? 0 : 50}" />`;

@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const svgContainer = document.createElement('div');
             svgContainer.className = 'grid-item-avatar';
-            svgContainer.innerHTML = generateAvatarSvg(seed, 80);
+            svgContainer.innerHTML = generateAvatarSvg(seed, 80, false, false); // Turn off animations for the grid items to save CPU
 
             const seedText = document.createElement('span');
             seedText.className = 'grid-item-seed';

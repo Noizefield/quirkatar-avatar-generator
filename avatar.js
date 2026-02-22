@@ -55,20 +55,35 @@ function generateAvatarSvg(seed, size = 100, square = false) {
     <style>
       @keyframes quirksBreathe {
         0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.02) translateY(-1px); }
+        50% { transform: scale(1.05) translateY(-3px); }
       }
       @keyframes quirksBlink {
-        0%, 96%, 100% { transform: scaleY(1); }
-        98% { transform: scaleY(0.1); }
+        0%, 94%, 100% { transform: scaleY(1); }
+        96% { transform: scaleY(0.01); }
       }
       @keyframes quirksTwitch {
         0%, 90%, 100% { transform: rotate(0deg); }
-        93% { transform: rotate(3deg); }
-        96% { transform: rotate(-3deg); }
+        93% { transform: rotate(8deg); }
+        96% { transform: rotate(-8deg); }
+      }
+      @keyframes quirksSmile {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px) scale(1.1); }
+      }
+      @keyframes quirksFrown {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(6px); }
+      }
+      @keyframes quirksTalk {
+        0%, 100% { transform: scaleY(1); }
+        50% { transform: scaleY(1.3); }
       }
       .quirks-breathe { animation: quirksBreathe 4s infinite ease-in-out; transform-origin: 50px 50px; }
-      .quirks-blink { animation: quirksBlink 5s infinite; transform-origin: 50px 45px; }
-      .quirks-twitch { animation: quirksTwitch 6s infinite ease-in-out; transform-origin: 50px 50px; }
+      .quirks-blink { animation: quirksBlink 4s infinite; transform-origin: 50px 45px; }
+      .quirks-twitch { animation: quirksTwitch 5s infinite ease-in-out; transform-origin: 50px 50px; }
+      .quirks-smile { animation: quirksSmile 3s infinite ease-in-out; transform-origin: 50px 70px; }
+      .quirks-frown { animation: quirksFrown 4s infinite ease-in-out; transform-origin: 50px 70px; }
+      .quirks-talk { animation: quirksTalk 0.5s infinite alternate; transform-origin: 50px 70px; }
     </style>
   `;
 
@@ -137,22 +152,22 @@ function generateAvatarSvg(seed, size = 100, square = false) {
 
   // Mouth
   if (mouth === 'smile') {
-    svg += `<path d="M 35 65 Q 50 80 65 65" stroke="#111" stroke-width="4" stroke-linecap="round" fill="none" />`;
+    svg += `<g class="quirks-smile"><path d="M 35 65 Q 50 80 65 65" stroke="#111" stroke-width="4" stroke-linecap="round" fill="none" /></g>`;
   } else if (mouth === 'openSmile') {
-    svg += `<path d="M 30 60 Q 50 85 70 60 Z" fill="#111" />
-            <path d="M 40 70 Q 50 75 60 70 Q 50 65 40 70" fill="#ff6b6b" />`;
+    svg += `<g class="quirks-talk"><path d="M 30 60 Q 50 85 70 60 Z" fill="#111" />
+            <path d="M 40 70 Q 50 75 60 70 Q 50 65 40 70" fill="#ff6b6b" /></g>`;
   } else if (mouth === 'frown') {
-    svg += `<path d="M 35 75 Q 50 60 65 75" stroke="#111" stroke-width="4" stroke-linecap="round" fill="none" />`;
+    svg += `<g class="quirks-frown"><path d="M 35 75 Q 50 60 65 75" stroke="#111" stroke-width="4" stroke-linecap="round" fill="none" /></g>`;
   } else if (mouth === 'cat') {
-    svg += `<path d="M 35 65 Q 42.5 75 50 65 Q 57.5 75 65 65" stroke="#111" stroke-width="4" stroke-linecap="round" fill="none" />`;
+    svg += `<g class="quirks-twitch"><path d="M 35 65 Q 42.5 75 50 65 Q 57.5 75 65 65" stroke="#111" stroke-width="4" stroke-linecap="round" fill="none" /></g>`;
   } else if (mouth === 'vampire') {
-    svg += `<path d="M 35 65 Q 50 80 65 65" stroke="#111" stroke-width="4" stroke-linecap="round" fill="none" />
+    svg += `<g class="quirks-smile"><path d="M 35 65 Q 50 80 65 65" stroke="#111" stroke-width="4" stroke-linecap="round" fill="none" />
             <polygon points="40,68 45,69 42.5,75" fill="#fff" />
-            <polygon points="60,68 55,69 57.5,75" fill="#fff" />`;
+            <polygon points="60,68 55,69 57.5,75" fill="#fff" /></g>`;
   } else if (mouth === 'o') {
-    svg += `<circle cx="50" cy="70" r="8" fill="#111" />`;
+    svg += `<g class="quirks-talk"><circle cx="50" cy="70" r="8" fill="#111" /></g>`;
   } else if (mouth === 'zigzag') {
-    svg += `<polyline points="35,65 42.5,70 50,65 57.5,70 65,65" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" />`;
+    svg += `<g class="quirks-frown"><polyline points="35,65 42.5,70 50,65 57.5,70 65,65" stroke="#111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" /></g>`;
   }
 
   // Accessory
